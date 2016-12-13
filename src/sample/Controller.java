@@ -61,7 +61,13 @@ public class Controller {
 
     public void handleButtonAction() {
 
-        File file = new File("C:\\users\\c1mt4\\documents\\White Board Creations");
+        markerP.setVisible(false);
+        saveAs.setVisible(false);
+        eraser.setVisible(false);
+        markerL.setVisible(false);
+
+        String user = System.getProperty("user.home");
+        File file = new File(user+"\\documents\\White Board Creations");
         if (!file.exists()) {
             if (file.mkdir()) {
                 System.out.println("Directory is created!");
@@ -70,7 +76,7 @@ public class Controller {
             }}
 
 
-            File screenshot = new File("C:/users/c1mt4/documents/White Board Creations/sample.png");
+            File screenshot = new File(user+"/documents/White Board Creations/sample.png");
 
             WritableImage snapshot = saveAs.getScene().snapshot(null);
 
@@ -100,7 +106,8 @@ public class Controller {
                         "   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
                 close.setOnMouseClicked(event ->
                         {
-                           dialog.close();
+                            dialog.close();
+
                             markerP.setVisible(true);
                             saveAs.setVisible(true);
                             eraser.setVisible(true);
@@ -111,10 +118,8 @@ public class Controller {
 
 
 
-                markerP.setVisible(false);
-                saveAs.setVisible(false);
-                eraser.setVisible(false);
-                markerL.setVisible(false);
+
+
 
                 StackPane dialogPane = new StackPane();
 
@@ -150,9 +155,6 @@ public class Controller {
     public void changemarkerInk()
     {
                     markerInk = markerP.getValue();
-
-
-
     }
 
 
@@ -164,16 +166,18 @@ public class Controller {
                     if(event.getCharacter().equals("h")||event.getCharacter().equals("H"))
                     {
 
+
                         markerP.setVisible(false);
                         saveAs.setVisible(false);
-                        eraser.setVisible(false);
                         markerL.setVisible(false);
+                        eraser.setVisible(false);
 
 
 
                     }
                     else if(event.getCharacter().equals("s")||event.getCharacter().equals("S"))
                     {
+
 
                         markerP.setVisible(true);
                         saveAs.setVisible(true);
