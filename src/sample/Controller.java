@@ -106,6 +106,7 @@ public class Controller {
                         "   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
                 close.setOnMouseClicked(event ->
                         {
+                            //
                             dialog.close();
 
                             saveAs.setVisible(true);
