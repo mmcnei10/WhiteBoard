@@ -51,7 +51,6 @@ public class Main extends Application {
 
 
         Image cursor = new Image("/sample/marker1.png");
-        //parentPane.setCursor(Cursor.cursor("C:\\Users\\c1mt4\\Documents\\White Board\\src\\sample\\cursor.jpg"));
        board.setCursor(new ImageCursor(cursor,
                 cursor.getWidth() / 2,
                 cursor.getHeight() /2));

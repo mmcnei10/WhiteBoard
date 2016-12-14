@@ -38,7 +38,7 @@
                     <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/C:/Users/c1mt4/Documents/White%20Board/src/sample/Mini-Sharpie-Marker-Pens-Mini-Key-Ring-Pens.jpg" />
+                        <Image url="/sample/Mini-Sharpie-Marker-Pens-Mini-Key-Ring-Pens.jpg" />
                      </source>
                   </ImageInput>
                     </effect>
