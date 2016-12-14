@@ -64,7 +64,7 @@ public class Main extends Application {
        );
         board.setOnMouseDragged(event ->
                 {
-                    //Controller.size_of_marker = 12;
+                   
                     boardGraphics.lineTo(event.getX(), event.getY());
                     boardGraphics.stroke();
                     boardGraphics.setStroke(Controller.markerInk);
