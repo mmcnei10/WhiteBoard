@@ -35,6 +35,10 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Controller {
 
@@ -45,26 +49,21 @@ public class Controller {
 
     @FXML
     Button saveAs = new Button();
-
     @FXML
     Label markerL = new Label();
     @FXML
     ColorPicker markerP = new ColorPicker();
     @FXML
-    HBox markerTool = new HBox();
-    @FXML
     Button eraser = new Button();
     @FXML
     Pane pane = new Pane();
-
-
+    @FXML
+    HBox toolBar1 = new HBox();
 
     public void handleButtonAction() {
-
-        markerP.setVisible(false);
-        saveAs.setVisible(false);
-        eraser.setVisible(false);
+      saveAs.setVisible(false);
         markerL.setVisible(false);
+        eraser.setVisible(false);
 
         String user = System.getProperty("user.home");
         File file = new File(user+"\\documents\\White Board Creations");
@@ -75,12 +74,13 @@ public class Controller {
                 System.out.println("Failed to create directory!");
             }}
 
-
-            File screenshot = new File(user+"/documents/White Board Creations/sample.png");
-
+        DateFormat df = new SimpleDateFormat("dd-MM-yy@ HH mm ss");
+        Date dateobject = new Date();
+        Calendar calendarObject = Calendar.getInstance();
+        String picName = df.format(calendarObject.getTime()) +".png";
+        File screenshot = new File(user+"/documents/White Board Creations/"+picName);
+        markerP.setVisible(false);
             WritableImage snapshot = saveAs.getScene().snapshot(null);
-
-
 
             try {
                 ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png",screenshot);
@@ -108,94 +108,60 @@ public class Controller {
                         {
                             dialog.close();
 
-                            markerP.setVisible(true);
                             saveAs.setVisible(true);
-                            eraser.setVisible(true);
                             markerL.setVisible(true);
+                            eraser.setVisible(true);
+                             markerP.setVisible(true);
 
                         }
                 );
-
-
-
-
-
-
                 StackPane dialogPane = new StackPane();
-
-
-                VBox h = new VBox(text);
+               VBox h = new VBox(text);
                 VBox z = new VBox(close);
                 z.setAlignment(Pos.BOTTOM_CENTER);
                 dialogPane.getChildren().addAll(h,z);
-
-
                 Scene scene = new Scene(dialogPane,600,120);
                 dialog.setScene(scene);
                 dialog.show();
             } catch (IOException e) {
                 System.out.println("Unable to take screenshot");
-
                 // TODO: handle exception here
             }
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
     public void changemarkerInk()
     {
                     markerInk = markerP.getValue();
+                    size_of_marker = 12;
     }
-
-
+    public void changemarkerSize()
+    {
+        if(markerP.getValue()==Color.WHITE)
+        {
+                             size_of_marker = 17;
+        }
+    }
     public void lambdaEvent()
     {
-
         pane.setOnKeyTyped(event ->
                 {
                     if(event.getCharacter().equals("h")||event.getCharacter().equals("H"))
-                    {
-
-
-                        markerP.setVisible(false);
-                        saveAs.setVisible(false);
-                        markerL.setVisible(false);
-                        eraser.setVisible(false);
-
-
-
+                    { saveAs.setVisible(false);
+                    markerL.setVisible(false);
+                       eraser.setVisible(false);
                     }
                     else if(event.getCharacter().equals("s")||event.getCharacter().equals("S"))
                     {
-
-
-                        markerP.setVisible(true);
                         saveAs.setVisible(true);
-                        eraser.setVisible(true);
                         markerL.setVisible(true);
-
+                        eraser.setVisible(true);
                     }
-
                 }
-
         );
     }
     public void erase()
     {
         size_of_marker= 67;
         markerInk = Color.WHITE;
-
-
     }
 
 
@@ -204,3 +170,4 @@ public class Controller {
 
 
 }
+

@@ -16,32 +16,34 @@
 <?import javafx.scene.control.Label?>
 
 <Pane fx:id="pane" onKeyTyped="#lambdaEvent" prefHeight="50.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-      <children>
-          <HBox fx:id="markerTool" layoutX="782.0" layoutY="16.0" prefHeight="39.0" prefWidth="190.0" />
-      <HBox fx:id="toolBar1" layoutX="169.0" layoutY="8.0" prefHeight="33.0" prefWidth="268.0" spacing="60.0">
-         <children>
-            <Button fx:id="saveAs" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="33.0" prefWidth="162.0" text="Save creation">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="eraser" mnemonicParsing="false" onAction="#erase" prefHeight="33.0" prefWidth="61.0" text="Eraser">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font></Button>
-         </children>
-      </HBox>
-            <Label fx:id="markerL" layoutX="600.0" layoutY="12.0" prefHeight="28.0" prefWidth="142.0" text="Choose Marker " textOverrun="CENTER_ELLIPSIS">
-                <font>
-                    <Font name="System Bold" size="19.0" />
-                </font>
-            </Label>
-            <ColorPicker fx:id="markerP" editable="true" layoutX="741.0" layoutY="2.0" onAction="#changemarkerInk" prefHeight="39.0" prefWidth="71.0" promptText="BLACK" style="-fx-border-color: gray;">
-         <effect>
-            <ImageInput>
-               <source>
-                  <Image url="file:/C:/Users/c1mt4/Documents/White%20Board/src/sample/Mini-Sharpie-Marker-Pens-Mini-Key-Ring-Pens.jpg" />
-               </source>
-            </ImageInput>
-         </effect></ColorPicker>
-      </children>
-  </Pane>
+    <children>
+        <HBox fx:id="toolBar1" layoutX="17.0" layoutY="8.0" prefHeight="33.0" prefWidth="931.0" spacing="60.0">
+            <children>
+                <Button fx:id="saveAs" mnemonicParsing="false" onMouseClicked="#handleButtonAction" prefHeight="33.0" prefWidth="162.0" text="Save creation">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button fx:id="eraser" mnemonicParsing="false" onMouseClicked="#erase" prefHeight="33.0" prefWidth="73.0" text="Erase">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Label fx:id="markerL" prefHeight="28.0" prefWidth="142.0" text="Choose Marker " textOverrun="CENTER_ELLIPSIS">
+                    <font>
+                        <Font name="System Bold" size="19.0" />
+                    </font>
+                </Label>
+                <ColorPicker fx:id="markerP" editable="true" onAction="#changemarkerInk" prefHeight="39.0" prefWidth="71.0" promptText="BLACK" style="-fx-border-color: gray;">
+                    <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="file:/C:/Users/c1mt4/Documents/White%20Board/src/sample/Mini-Sharpie-Marker-Pens-Mini-Key-Ring-Pens.jpg" />
+                     </source>
+                  </ImageInput>
+                    </effect>
+                </ColorPicker>
+            </children>
+        </HBox>
+    </children>
+</Pane>
