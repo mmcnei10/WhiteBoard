@@ -1,38 +1,22 @@
 package sample;
 
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -61,36 +45,18 @@ public class Controller {
     HBox toolBar1 = new HBox();
 
     public void handleButtonAction() {
-      saveAs.setVisible(false);
+        saveAs.setVisible(false);
         markerL.setVisible(false);
         eraser.setVisible(false);
-        //user.home
         String osName = System.getProperty( "os.name" ).toLowerCase();
+        String user = System.getProperty("user.name");
         String filePath ="";
-        if(osName.contains("Mac")){
-            //filePath =
-
-//File path = new File(File.listRoots()[0], "Users" + System.getProperty("file.separator") + "Mymac" + System.getProperty("file.separator") + "Desktop"));
-//            String path="/Users/Mymac/Desktop";
-//            String house = "My_home";
-//            File file=new File(path);
-//            if(!file.exists())
-//                file.mkdirs(); // or file.mkdir()
-//
-//            file=new File(path + "/" + house);
-//            try {
-//                if(file.createNewFile())
-//                {
-//                }
-//            } catch (IOException ex) {
-//
-//                ex.printStackTrace();
-//            }
+        if(osName.contains("mac")){
+            filePath ="/Users/"+user+"/Documents/White Board Creations";
         }
         else{
-            String user = System.getProperty("user.home");
-            filePath = user+"\\documents\\White Board Creations";
-            System.out.print(user+",   "+ osName);
+            String userRoot = System.getProperty("user.home");
+            filePath = userRoot+"\\documents\\White Board Creations";
         }
 
 
@@ -108,65 +74,65 @@ public class Controller {
         String picName = df.format(calendarObject.getTime()) +".png";
         File screenshot = new File(filePath+"/"+picName);
         markerP.setVisible(false);
-            WritableImage snapshot = saveAs.getScene().snapshot(null);
+        WritableImage snapshot = saveAs.getScene().snapshot(null);
 
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png",screenshot);
-                Stage dialog = new Stage();
-                dialog.setResizable(false);
-                dialog.initStyle(StageStyle.UTILITY);
-                Label text = new Label("Saved in documents under White Board Creations!");
-                text.setStyle("  -fx-font-size: 20pt;\n" +
-                        "    -fx-font-family: \"Segoe UI Light\";\n" +
-                        "    -fx-text-fill: black;\n" +
-                        "    -fx-opacity: 1;");
-                Button close = new Button("Got it!");
-                close.setStyle("  -fx-background-color: \n" +
-                       "linear-gradient(#f2f2f2, #d6d6d6),\n" +
-                                "        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),\n" +
-                                "        linear-gradient(#dddddd 0%, #f6f6f6 50%);\n"+
-                        "    -fx-background-insets: 0,1,4,5;\n" +
-                        "    -fx-background-radius: 9,8,5,4;\n" +
-                        "    -fx-padding: 15 30 15 30;\n" +
-                        "    -fx-font-family: \"Helvetica\";\n" +
-                        "    -fx-font-size: 18px;\n" +
-                        "    -fx-text-fill: #333333;\n" +
-                        "   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
-                close.setOnMouseClicked(event ->
-                        {
-                            //
-                            dialog.close();
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png",screenshot);
+            Stage dialog = new Stage();
+            dialog.setResizable(false);
+            dialog.initStyle(StageStyle.UTILITY);
+            Label text = new Label("Saved in documents under White Board Creations!");
+            text.setStyle("  -fx-font-size: 15pt;\n" +
+                    "    -fx-font-family: \"Segoe UI Light\";\n" +
+                    "    -fx-text-fill: black;\n" +
+                    "    -fx-opacity: 1;");
+            Button close = new Button("Got it!");
+            close.setStyle("  -fx-background-color: \n" +
+                    "linear-gradient(#f2f2f2, #d6d6d6),\n" +
+                    "        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),\n" +
+                    "        linear-gradient(#dddddd 0%, #f6f6f6 50%);\n"+
+                    "    -fx-background-insets: 0,1,4,5;\n" +
+                    "    -fx-background-radius: 9,8,5,4;\n" +
+                    "    -fx-padding: 15 30 15 30;\n" +
+                    "    -fx-font-family: \"Helvetica\";\n" +
+                    "    -fx-font-size: 18px;\n" +
+                    "    -fx-text-fill: #333333;\n" +
+                    "   -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
+            close.setOnMouseClicked(event ->
+                    {
+                        //
+                        dialog.close();
 
-                            saveAs.setVisible(true);
-                            markerL.setVisible(true);
-                            eraser.setVisible(true);
-                             markerP.setVisible(true);
+                        saveAs.setVisible(true);
+                        markerL.setVisible(true);
+                        eraser.setVisible(true);
+                        markerP.setVisible(true);
 
-                        }
-                );
-                StackPane dialogPane = new StackPane();
-               VBox h = new VBox(text);
-                VBox z = new VBox(close);
-                z.setAlignment(Pos.BOTTOM_CENTER);
-                dialogPane.getChildren().addAll(h,z);
-                Scene scene = new Scene(dialogPane,600,120);
-                dialog.setScene(scene);
-                dialog.show();
-            } catch (IOException e) {
-                System.out.println("Unable to take screenshot");
-                // TODO: handle exception here
-            }
+                    }
+            );
+            StackPane dialogPane = new StackPane();
+            VBox h = new VBox(text);
+            VBox z = new VBox(close);
+            z.setAlignment(Pos.BOTTOM_CENTER);
+            dialogPane.getChildren().addAll(h,z);
+            Scene scene = new Scene(dialogPane,600,120);
+            dialog.setScene(scene);
+            dialog.show();
+        } catch (IOException e) {
+            System.out.println("Unable to take screenshot");
+            // TODO: handle exception here
+        }
     }
     public void changemarkerInk()
     {
-                    markerInk = markerP.getValue();
-                    size_of_marker = 12;
+        markerInk = markerP.getValue();
+        size_of_marker = 12;
     }
     public void changemarkerSize()
     {
         if(markerP.getValue()==Color.WHITE)
         {
-                             size_of_marker = 17;
+            size_of_marker = 17;
         }
     }
     public void lambdaEvent()
@@ -175,8 +141,8 @@ public class Controller {
                 {
                     if(event.getCharacter().equals("h")||event.getCharacter().equals("H"))
                     { saveAs.setVisible(false);
-                    markerL.setVisible(false);
-                       eraser.setVisible(false);
+                        markerL.setVisible(false);
+                        eraser.setVisible(false);
                     }
                     else if(event.getCharacter().equals("s")||event.getCharacter().equals("S"))
                     {
@@ -199,4 +165,3 @@ public class Controller {
 
 
 }
-

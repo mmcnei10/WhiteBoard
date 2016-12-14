@@ -2,6 +2,7 @@
  *
  * Author: Mariel McNeil
  * White Board is a small drawing application, that clears, captures, and saves user's drawings
+ Compatible with Mac OSX and Windows 7, 8, 10
  */
 
 To clear the board simply double click.
