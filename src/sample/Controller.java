@@ -64,9 +64,37 @@ public class Controller {
       saveAs.setVisible(false);
         markerL.setVisible(false);
         eraser.setVisible(false);
+        //user.home
+        String osName = System.getProperty( "os.name" ).toLowerCase();
+        String filePath ="";
+        if(osName.contains("Mac")){
+            //filePath =
 
-        String user = System.getProperty("user.home");
-        File file = new File(user+"\\documents\\White Board Creations");
+//File path = new File(File.listRoots()[0], "Users" + System.getProperty("file.separator") + "Mymac" + System.getProperty("file.separator") + "Desktop"));
+//            String path="/Users/Mymac/Desktop";
+//            String house = "My_home";
+//            File file=new File(path);
+//            if(!file.exists())
+//                file.mkdirs(); // or file.mkdir()
+//
+//            file=new File(path + "/" + house);
+//            try {
+//                if(file.createNewFile())
+//                {
+//                }
+//            } catch (IOException ex) {
+//
+//                ex.printStackTrace();
+//            }
+        }
+        else{
+            String user = System.getProperty("user.home");
+            filePath = user+"\\documents\\White Board Creations";
+            System.out.print(user+",   "+ osName);
+        }
+
+
+        File file = new File(filePath);
         if (!file.exists()) {
             if (file.mkdir()) {
                 System.out.println("Directory is created!");
@@ -78,7 +106,7 @@ public class Controller {
         Date dateobject = new Date();
         Calendar calendarObject = Calendar.getInstance();
         String picName = df.format(calendarObject.getTime()) +".png";
-        File screenshot = new File(user+"/documents/White Board Creations/"+picName);
+        File screenshot = new File(filePath+"/"+picName);
         markerP.setVisible(false);
             WritableImage snapshot = saveAs.getScene().snapshot(null);
 
